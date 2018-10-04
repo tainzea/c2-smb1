@@ -8,11 +8,12 @@
     <author-website>http://</author-website>
     <app-id>com.jcw87.smb1</app-id>
     <unique-id>2p1qnu1nm3azu</unique-id>
-    <saved-with-version>22100</saved-with-version>
+    <saved-with-version>26200</saved-with-version>
     <used-plugins>
         <plugin author="Scirra" id="AJAX" version="1">AJAX</plugin>
         <plugin author="Scirra" id="Arr" version="1">Array</plugin>
         <plugin author="Scirra" id="Audio" version="1">Audio</plugin>
+        <plugin author="Scirra" id="Browser" version="1">Browser</plugin>
         <plugin author="Scirra" id="Dictionary" version="1">Dictionary</plugin>
         <plugin author="Scirra" id="Function" version="1">Function</plugin>
         <plugin author="Scirra" id="Keyboard" version="1">Keyboard</plugin>
@@ -21,6 +22,7 @@
         <plugin author="Scirra" id="Sprite" version="1">Sprite</plugin>
         <plugin author="Scirra" id="Spritefont2" version="1">Sprite font</plugin>
         <plugin author="Scirra" id="TiledBg" version="1">Tiled Background</plugin>
+        <plugin author="Scirra" id="Touch" version="1">Touch</plugin>
         <plugin author="Scirra" id="gamepad" version="1">Gamepad</plugin>
     </used-plugins>
     <used-behaviors>
@@ -53,7 +55,7 @@
         <prop name="Pause on unfocus">No</prop>
         <prop name="Physics engine">Box2D web</prop>
         <prop name="Preload sounds">Yes</prop>
-        <prop name="Preview browser">Node-Webkit</prop>
+        <prop name="Preview browser">Chrome</prop>
         <prop name="Sampling">Point</prop>
         <prop name="Use high-DPI display">Yes</prop>
     </configuration-settings>
@@ -76,6 +78,12 @@
             </object-type>
             <object-type name="Mouse" sid="5264109717643635">
                 <plugin id="Mouse" />
+            </object-type>
+            <object-type name="Touch" sid="950371085212049">
+                <plugin id="Touch" />
+            </object-type>
+            <object-type name="Browser" sid="827627391576629">
+                <plugin id="Browser" />
             </object-type>
         </object-folder>
         <object-folder name="Player">
@@ -1343,6 +1351,49 @@
                 </instance-variables>
             </object-type>
         </object-folder>
+        <object-folder name="TouchUI">
+            <object-type name="TouchA" sid="619084773939210">
+                <plugin id="Sprite" />
+                <animation-folder>
+                    <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="277066223825486" speed="5">
+                        <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="D:\Documents\Construct2\Button.png" />
+                    </animation>
+                    <animation framecount="1" loop="0" name="Pressed" pingpong="0" repeatcount="1" repeatto="0" sid="229627042520182" speed="5">
+                        <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                    </animation>
+                </animation-folder>
+            </object-type>
+            <object-type name="TouchB" sid="669897946653271">
+                <plugin id="Sprite" />
+                <animation-folder>
+                    <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="702342974536236" speed="5">
+                        <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="D:\Documents\Construct2\Button.png" />
+                    </animation>
+                    <animation framecount="1" loop="0" name="Pressed" pingpong="0" repeatcount="1" repeatto="0" sid="659961717548780" speed="5">
+                        <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                    </animation>
+                </animation-folder>
+            </object-type>
+            <object-type name="TouchDPad" sid="702681450781394">
+                <plugin id="Sprite" />
+                <instance-variables>
+                    <instance-variable name="TouchID" sid="133468814557456" type="number" />
+                </instance-variables>
+                <animation-folder>
+                    <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="902557330975231" speed="5">
+                        <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="D:\Documents\Construct2\Dpad.png" />
+                    </animation>
+                </animation-folder>
+            </object-type>
+            <object-type name="TouchStart" sid="552373942149852">
+                <plugin id="Sprite" />
+                <animation-folder>
+                    <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="727785922074932" speed="5">
+                        <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                    </animation>
+                </animation-folder>
+            </object-type>
+        </object-folder>
         <object-type name="FlagPole" sid="9709481357076991">
             <plugin id="NinePatch" />
             <texture />
@@ -1542,6 +1593,17 @@
                 <member>StarmanHitbox</member>
             </members>
         </family>
+        <family name="TouchButton" plugin-id="Sprite" sid="800569405656358">
+            <members>
+                <member>TouchA</member>
+                <member>TouchB</member>
+                <member>TouchStart</member>
+            </members>
+            <instance-variables>
+                <instance-variable name="TouchID" sid="975776148390708" type="number" />
+                <instance-variable name="Pressed" sid="675647357485765" type="boolean" />
+            </instance-variables>
+        </family>
     </families>
     <layout-folder>
         <layout-folder name="World 1">
@@ -1601,6 +1663,12 @@
             </properties>
         </global-instance>
         <global-instance type="Mouse" uid="919" />
+        <global-instance type="Touch" uid="1411">
+            <properties>
+                <use-mouse-input>Yes</use-mouse-input>
+            </properties>
+        </global-instance>
+        <global-instance type="Browser" uid="1412" />
     </global-instances>
     <sounds-folder>
         <file name="smb_brickbreak.ogg" />
